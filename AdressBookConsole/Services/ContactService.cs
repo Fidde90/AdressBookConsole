@@ -4,12 +4,14 @@ namespace AdressBookConsole.Models
 {
     public class ContactService : IContactService
     {
-        public void AddContact(IContact contact)
+        private readonly List<IContact> _contactList = new List<IContact>();
+
+        public void AddContactToList(IContact contact)
         {
             throw new NotImplementedException();
         }
 
-        public void GetAllContacts()
+        IEnumerable<IContact> IContactService.GetAllContacts()
         {
             throw new NotImplementedException();
         }
@@ -22,6 +24,6 @@ namespace AdressBookConsole.Models
         public void DeleteContact()
         {
             throw new NotImplementedException();
-        }
+        }  
     }
 }
