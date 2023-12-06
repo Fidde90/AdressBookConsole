@@ -1,17 +1,24 @@
 ﻿
-
 using AdressBookConsole.Interfaces;
+using AdressBookConsole.Models;
 
 namespace AdressBookConsole.Services
 {
     public class FileService : IFileService
     {
-        public void ReadFromFile()
+        private readonly ContactService _contactService;
+
+        public FileService(ContactService contact)
+        { 
+            _contactService = contact;
+        }
+
+        public string ReadFromFile(string path)
         {
             throw new NotImplementedException();
         }
 
-        public void WriteToFile()
+        public bool WriteToFile(string list)
         {
             throw new NotImplementedException();
         }

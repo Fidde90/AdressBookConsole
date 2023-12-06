@@ -1,8 +1,9 @@
 ﻿
+using AdressBookConsole.Interfaces;
 using AdressBookConsole.Models;
+using AdressBookConsole.Services;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System.ComponentModel.DataAnnotations;
 
 namespace AdressBookConsole
 {
@@ -13,6 +14,9 @@ namespace AdressBookConsole
             var builder = Host.CreateDefaultBuilder().ConfigureServices(services =>
             {
                 services.AddSingleton<MainMenu>();
+                services.AddSingleton<IMenuService,MenuService>();
+                services.AddSingleton<IFileService,FileService>();           
+                
             }).Build();
 
             builder.Start();
