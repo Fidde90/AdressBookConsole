@@ -1,9 +1,18 @@
 ﻿
 
+using AdressBookConsole.Services;
+
 namespace AdressBookConsole.Models
 {
     public class MainMenu
     {
+        private readonly MenuService _menuService;
+
+        public MainMenu(MenuService menuService) 
+        {
+            _menuService = menuService;
+        }
+
         public void ShowMainMenu()
         {
             while (true)
