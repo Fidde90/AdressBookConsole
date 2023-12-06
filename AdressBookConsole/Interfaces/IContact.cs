@@ -13,7 +13,7 @@ namespace AdressBookConsole.Interfaces
 
         string Street { get; set; }
 
-        string PostalCode { get; set; }
+        string ZipCode { get; set; }
 
         string City { get; set; }
 
