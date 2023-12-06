@@ -1,10 +1,19 @@
-﻿namespace AdressBookConsole
+﻿
+using Microsoft.Extensions.Hosting;
+
+namespace AdressBookConsole
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            var builder = Host.CreateDefaultBuilder().ConfigureServices(services =>
+            {
+
+            });
+
+            builder.Start();
+            Console.Clear();
         }
     }
 }
