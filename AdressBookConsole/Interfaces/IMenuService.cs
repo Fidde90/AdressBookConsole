@@ -1,7 +1,7 @@
 ﻿
 namespace AdressBookConsole.Interfaces
 {
-    internal interface IMenuService
+    public interface IMenuService
     {
         void AddContactDialog();
 

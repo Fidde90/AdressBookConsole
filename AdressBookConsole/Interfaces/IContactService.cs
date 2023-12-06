@@ -5,12 +5,12 @@ namespace AdressBookConsole.Interfaces
 {
     public interface IContactService
     {
-        void AddContactToList(IContact contact);
+        bool AddContactToList(IContact contact);
 
-        IEnumerable<IContact> GetAllContacts();
+        IEnumerable<IContact> GetAllContactsFromList();
 
-        Contact GetContact(string email);
+        Contact GetContactFromList(string email);
 
-        void DeleteContact();
+        bool DeleteContact(string email);
     }
 }

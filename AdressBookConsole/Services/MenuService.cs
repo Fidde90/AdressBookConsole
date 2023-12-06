@@ -1,10 +1,18 @@
 ﻿
 using AdressBookConsole.Interfaces;
+using AdressBookConsole.Models;
 
 namespace AdressBookConsole.Services
 {
-    internal class MenuService : IMenuService
+    public class MenuService : IMenuService
     {
+        private readonly ContactService _contactService;
+
+        public MenuService(ContactService contactService) 
+        {
+            _contactService = contactService;
+        }
+
         public void AddContactDialog()
         {
             throw new NotImplementedException();

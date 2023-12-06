@@ -6,22 +6,22 @@ namespace AdressBookConsole.Models
     {
         private readonly List<IContact> _contactList = new List<IContact>();
 
-        public void AddContactToList(IContact contact)
+        public bool AddContactToList(IContact contact)
         {
             throw new NotImplementedException();
         }
 
-        IEnumerable<IContact> IContactService.GetAllContacts()
+        IEnumerable<IContact> IContactService.GetAllContactsFromList()
         {
             throw new NotImplementedException();
         }
 
-        public Contact GetContact(string email)
+        public Contact GetContactFromList(string email)
         {
             throw new NotImplementedException();
         }
 
-        public void DeleteContact()
+        public bool DeleteContact(string email)
         {
             throw new NotImplementedException();
         }  
