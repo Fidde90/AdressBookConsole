@@ -25,7 +25,7 @@ namespace AdressBookConsole.Services
             throw new NotImplementedException();
         }
 
-        public void ShowContactDetails()
+        public void ContactDetailsDialog()
         {
             throw new NotImplementedException();
         }

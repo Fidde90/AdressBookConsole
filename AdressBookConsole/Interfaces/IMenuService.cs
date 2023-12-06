@@ -7,7 +7,7 @@ namespace AdressBookConsole.Interfaces
 
         void ShowAllContacts();
 
-        void ShowContactDetails();
+        void ContactDetailsDialog();
 
         void DeleteDialog();
 
