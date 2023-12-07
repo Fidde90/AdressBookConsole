@@ -1,20 +1,19 @@
 ﻿using AdressBookConsole.Interfaces;
+using Newtonsoft.Json;
 using System.Diagnostics;
 
 namespace AdressBookConsole.Models
 {
     public class ContactService : IContactService
     {
-        private readonly IFileService _fileService;
-
         private readonly List<IContact> _contactList = new List<IContact>();
 
+        private readonly IFileService _fileService;
 
         public ContactService(IFileService fileService)
         {
             _fileService = fileService;
         }
-
 
         public bool AddContactToList(IContact contact)
         {
@@ -25,7 +24,12 @@ namespace AdressBookConsole.Models
                     if (!_contactList.Any(x => x.Email == contact.Email))
                     {
                         _contactList.Add(contact);
-                        return true;
+                        bool res = _fileService.WriteToFile(JsonConvert.SerializeObject(_contactList));
+                      
+                        if (res == true)
+                        {                    
+                            return true;
+                        }                           
                     }
                 }
             }

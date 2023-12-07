@@ -8,6 +8,7 @@ namespace AdressBookConsole.Models
     {
         private readonly IMenuService _menuService;
 
+
         public MainMenu(IMenuService menuService)
         {
             _menuService = menuService;
@@ -48,7 +49,7 @@ namespace AdressBookConsole.Models
                         break;
 
                     case "5":
-
+                        _menuService.ExitDialogue();
                         break;
 
                     default:

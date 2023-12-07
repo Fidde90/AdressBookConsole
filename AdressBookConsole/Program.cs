@@ -13,17 +13,17 @@ namespace AdressBookConsole
         {
             var builder = Host.CreateDefaultBuilder().ConfigureServices(services =>
             {
-                services.AddSingleton<IMainMenu,MainMenu>();
+                services.AddSingleton<IContactService, ContactService>();
                 services.AddSingleton<IMenuService, MenuService>();
                 services.AddSingleton<IFileService, FileService>();
-                services.AddSingleton<IContactService, ContactService>();
+                services.AddSingleton<MainMenu>();
 
             }).Build();
 
             builder.Start();
             Console.Clear();
 
-            var mainMenu = builder.Services.GetRequiredService<IMainMenu>();
+            var mainMenu = builder.Services.GetRequiredService<MainMenu>();
             mainMenu.ShowMainMenu();
         }
     }

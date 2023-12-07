@@ -36,7 +36,7 @@ namespace AdressBookConsole.Services
             newContact.Street = Console.ReadLine()!;
 
             Console.Write("\nEnter zip code: ");
-            newContact.Street = Console.ReadLine()!;
+            newContact.ZipCode = Console.ReadLine()!;
 
             Console.Write("\nEnter city: ");
             newContact.City = Console.ReadLine()!;
@@ -68,7 +68,13 @@ namespace AdressBookConsole.Services
 
         public void ExitDialogue()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("Are you sure you want to exit? (y/n)");
+            string yesNo = Console.ReadLine() ?? "";
+
+            if (yesNo.ToLower() == "y")
+                Environment.Exit(0);
+            else
+                return;
         }
 
         public void ShowAllContacts()
@@ -76,19 +82,18 @@ namespace AdressBookConsole.Services
             try
             {
                 var contacts = _contactService.GetAllContactsFromList();
- 
-                if (contacts.Count() >= 1)
-                {
-                    foreach (var contact in contacts)
-                    {
-                        Console.WriteLine(contact.FirstName);          
-                    }  
-                }
-                else
+              
+                if (!contacts.Any())
                 {
                     Console.WriteLine("The list was empty..");
                 }
-
+                else
+                {
+                    foreach (var contact in contacts)
+                    {
+                        Console.WriteLine($"{contact.FirstName} {contact.LastName} {contact.City}");
+                    }                
+                }
             }
             catch (Exception e) { Debug.WriteLine(e); }   
         }
