@@ -1,14 +1,14 @@
 ﻿
 
-using AdressBookConsole.Services;
+using AdressBookConsole.Interfaces;
 
 namespace AdressBookConsole.Models
 {
-    public class MainMenu
+    public class MainMenu : IMainMenu
     {
-        private readonly MenuService _menuService;
+        private readonly IMenuService _menuService;
 
-        public MainMenu(MenuService menuService) 
+        public MainMenu(IMenuService menuService)
         {
             _menuService = menuService;
         }
@@ -31,7 +31,7 @@ namespace AdressBookConsole.Models
                 switch (choise)
                 {
                     case "1":
-
+                        _menuService.AddContactDialogue();
                         break;
 
                     case "2":

@@ -3,14 +3,14 @@ namespace AdressBookConsole.Interfaces
 {
     public interface IMenuService
     {
-        void AddContactDialog();
+        void AddContactDialogue();
 
         void ShowAllContacts();
 
-        void ContactDetailsDialog();
+        void ContactDetailsDialogue();
 
-        void DeleteDialog();
+        void DeleteDialogue();
 
-        void ExitDialog();
+        void ExitDialogue();
     }
 }

@@ -6,12 +6,6 @@ namespace AdressBookConsole.Services
 {
     public class FileService : IFileService
     {
-        private readonly ContactService _contactService;
-
-        public FileService(ContactService contact)
-        { 
-            _contactService = contact;
-        }
 
         public string ReadFromFile(string path)
         {

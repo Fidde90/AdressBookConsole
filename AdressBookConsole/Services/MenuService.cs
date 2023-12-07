@@ -6,14 +6,14 @@ namespace AdressBookConsole.Services
 {
     public class MenuService : IMenuService
     {
-        private readonly ContactService _contactService;
+        private readonly IContactService _contactService;
 
-        public MenuService(ContactService contactService) 
+        public MenuService(IContactService contactService/*,IFileService fileService*/)
         {
             _contactService = contactService;
         }
 
-        public void AddContactDialog()
+        public void AddContactDialogue()
         {
             IContact newContact = new Contact();
 
@@ -45,12 +45,12 @@ namespace AdressBookConsole.Services
                 _contactService.AddContactToList(newContact);
         }
 
-        public void DeleteDialog()
+        public void DeleteDialogue()
         {
             throw new NotImplementedException();
         }
 
-        public void ExitDialog()
+        public void ExitDialogue()
         {
             throw new NotImplementedException();
         }
@@ -60,7 +60,7 @@ namespace AdressBookConsole.Services
             throw new NotImplementedException();
         }
 
-        public void ContactDetailsDialog()
+        public void ContactDetailsDialogue()
         {
             throw new NotImplementedException();
         }

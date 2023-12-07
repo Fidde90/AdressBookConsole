@@ -4,7 +4,16 @@ namespace AdressBookConsole.Models
 {
     public class ContactService : IContactService
     {
+        private readonly IFileService _fileService;
+
         private readonly List<IContact> _contactList = new List<IContact>();
+
+
+        public ContactService(IFileService fileService)
+        {
+            _fileService = fileService;
+        }
+
 
         public bool AddContactToList(IContact contact)
         {
