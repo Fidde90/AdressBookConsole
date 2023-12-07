@@ -18,6 +18,7 @@ namespace AdressBookConsole.Models
             while (true)
             {
                 Console.Clear();
+                Console.ForegroundColor = ConsoleColor.DarkYellow;
 
                 Console.WriteLine("|----| AdressBook |----|\n");
                 Console.WriteLine($"{"1:",-4} Add contact");

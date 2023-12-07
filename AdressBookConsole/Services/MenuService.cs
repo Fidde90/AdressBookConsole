@@ -17,32 +17,47 @@ namespace AdressBookConsole.Services
         {
             IContact newContact = new Contact();
 
-            Console.Write("Enter first name: ");
+            Console.Clear();
+
+            Console.Write("\nEnter first name: ");
             newContact.FirstName = Console.ReadLine()!;
 
-            Console.Write("Enter last name: ");
+            Console.Write("\nEnter last name: ");
             newContact.LastName = Console.ReadLine()!;
 
-            Console.Write("Enter phone number (not mandatory): ");
+            Console.Write("\nEnter phone number (not mandatory): ");
             newContact.PhoneNumber = Console.ReadLine()!;
 
-            Console.Write("Enter e-mail: ");
+            Console.Write("\nEnter e-mail: ");
             newContact.Email = Console.ReadLine()!;
 
-            Console.Write("Enter street: ");
+            Console.Write("\nEnter street: ");
             newContact.Street = Console.ReadLine()!;
 
-            Console.Write("Enter zip code: ");
+            Console.Write("\nEnter zip code: ");
             newContact.Street = Console.ReadLine()!;
 
-            Console.Write("Enter city: ");
+            Console.Write("\nEnter city: ");
             newContact.City = Console.ReadLine()!;
 
-            Console.Write("Enter country ");
+            Console.Write("\nEnter country ");
             newContact.Country = Console.ReadLine()!;
 
             if (newContact != null)
-                _contactService.AddContactToList(newContact);
+            {
+                bool res = _contactService.AddContactToList(newContact);
+
+                if (res)
+                {
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine("\nContact added!");
+                }
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine("\nContact already excists!");
+                }        
+            }              
         }
 
         public void DeleteDialogue()

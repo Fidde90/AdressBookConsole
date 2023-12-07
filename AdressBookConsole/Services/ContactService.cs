@@ -1,4 +1,5 @@
 ﻿using AdressBookConsole.Interfaces;
+using System.Diagnostics;
 
 namespace AdressBookConsole.Models
 {
@@ -17,7 +18,19 @@ namespace AdressBookConsole.Models
 
         public bool AddContactToList(IContact contact)
         {
-            throw new NotImplementedException();
+            try
+            {
+                if(contact != null)
+                {
+                    if (!_contactList.Any(x => x.Email == contact.Email))
+                    {
+                        _contactList.Add(contact);
+                        return true;
+                    }
+                }
+            }
+            catch (Exception e) { Debug.WriteLine(e); }
+            return false;
         }
 
         IEnumerable<IContact> IContactService.GetAllContactsFromList()
@@ -33,6 +46,6 @@ namespace AdressBookConsole.Models
         public bool DeleteContact(string email)
         {
             throw new NotImplementedException();
-        }  
+        }
     }
 }
