@@ -20,7 +20,7 @@ namespace AdressBookConsole.Models
         {
             try
             {
-                if(contact != null)
+                if (contact != null)
                 {
                     if (!_contactList.Any(x => x.Email == contact.Email))
                     {
@@ -35,7 +35,7 @@ namespace AdressBookConsole.Models
 
         IEnumerable<IContact> IContactService.GetAllContactsFromList()
         {
-            throw new NotImplementedException();
+            return _contactList;
         }
 
         public Contact GetContactFromList(string email)

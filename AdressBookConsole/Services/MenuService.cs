@@ -1,6 +1,7 @@
 ﻿
 using AdressBookConsole.Interfaces;
 using AdressBookConsole.Models;
+using System.Diagnostics;
 
 namespace AdressBookConsole.Services
 {
@@ -8,7 +9,7 @@ namespace AdressBookConsole.Services
     {
         private readonly IContactService _contactService;
 
-        public MenuService(IContactService contactService/*,IFileService fileService*/)
+        public MenuService(IContactService contactService)
         {
             _contactService = contactService;
         }
@@ -56,8 +57,8 @@ namespace AdressBookConsole.Services
                 {
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine("\nContact already excists!");
-                }        
-            }              
+                }
+            }
         }
 
         public void DeleteDialogue()
@@ -72,7 +73,24 @@ namespace AdressBookConsole.Services
 
         public void ShowAllContacts()
         {
-            throw new NotImplementedException();
+            try
+            {
+                var contacts = _contactService.GetAllContactsFromList();
+ 
+                if (contacts.Count() >= 1)
+                {
+                    foreach (var contact in contacts)
+                    {
+                        Console.WriteLine(contact.FirstName);          
+                    }  
+                }
+                else
+                {
+                    Console.WriteLine("The list was empty..");
+                }
+
+            }
+            catch (Exception e) { Debug.WriteLine(e); }   
         }
 
         public void ContactDetailsDialogue()

@@ -36,7 +36,7 @@ namespace AdressBookConsole.Models
                         break;
 
                     case "2":
-
+                        _menuService.ShowAllContacts();
                         break;
 
                     case "3":
