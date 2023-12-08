@@ -3,7 +3,7 @@ namespace AdressBookConsole.Interfaces
 {
     public interface IFileService
     {
-        bool WriteToFile(string list);
+        bool WriteToFile(List<IContact> contactList);
 
         string ReadFromFile();
     }

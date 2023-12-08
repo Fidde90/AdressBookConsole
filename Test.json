@@ -1,0 +1,13 @@
+[
+  {
+    "$type": "AdressBookConsole.Models.Contact, AdressBookConsole",
+    "FirstName": "flaffis",
+    "LastName": "lala",
+    "PhoneNumber": "23423423",
+    "Email": "asdfds@sdfsdf.com",
+    "Street": "fsfdsfsdf 34",
+    "ZipCode": "234324",
+    "City": "erweter",
+    "Country": "asfasf"
+  }
+]

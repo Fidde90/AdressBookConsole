@@ -1,6 +1,8 @@
 ﻿
 using AdressBookConsole.Interfaces;
 using AdressBookConsole.Models;
+using System.Collections.Concurrent;
+using System.Collections.Immutable;
 using System.Diagnostics;
 
 namespace AdressBookConsole.Services
@@ -60,10 +62,63 @@ namespace AdressBookConsole.Services
                 }
             }
         }
+     
+        public void ShowAllContacts()
+        {
+            try
+            {
+                var contacts = _contactService.GetAllContactsFromList();
+
+                if (!contacts.Any())
+                {
+                    Console.WriteLine("The list was empty..");
+                }
+                else
+                {
+                    foreach (var contact in contacts)
+                    {
+                        Console.WriteLine($"{contact.FirstName} {contact.LastName} {contact.City}");
+                    }
+                }
+            }
+            catch (Exception e) { Debug.WriteLine(e); }
+        }
+
+        public void ContactDetailsDialogue()
+        {
+
+
+        }
 
         public void DeleteDialogue()
         {
-            throw new NotImplementedException();
+            var contacts = _contactService.GetAllContactsFromList().ToArray();
+
+            if (contacts.Length > 0)
+            {
+                int remove;
+
+                for (var i = 0; i < contacts.Count(); i++)
+                    Console.WriteLine($"{i + 1}: {contacts[i].FirstName} {contacts[i].LastName} {contacts[i].City}");
+
+                do
+                {
+                    Console.Write("Enter contacts index number to remove from list: ");
+                    _ = int.TryParse(Console.ReadLine(), out remove);
+                } while (remove > contacts.Length || remove < contacts.Length);
+
+                bool res = _contactService.DeleteContact(contacts[remove - 1].Email);
+
+                if (res)
+                    Console.WriteLine("Contact removed!");
+                else
+                    Console.WriteLine("Contact does not excist");
+            }
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.DarkRed;
+                Console.WriteLine("The list was empty..");
+            }
         }
 
         public void ExitDialogue()
@@ -75,32 +130,6 @@ namespace AdressBookConsole.Services
                 Environment.Exit(0);
             else
                 return;
-        }
-
-        public void ShowAllContacts()
-        {
-            try
-            {
-                var contacts = _contactService.GetAllContactsFromList();
-              
-                if (!contacts.Any())
-                {
-                    Console.WriteLine("The list was empty..");
-                }
-                else
-                {
-                    foreach (var contact in contacts)
-                    {
-                        Console.WriteLine($"{contact.FirstName} {contact.LastName} {contact.City}");
-                    }                
-                }
-            }
-            catch (Exception e) { Debug.WriteLine(e); }   
-        }
-
-        public void ContactDetailsDialogue()
-        {
-            throw new NotImplementedException();
         }
     }
 }

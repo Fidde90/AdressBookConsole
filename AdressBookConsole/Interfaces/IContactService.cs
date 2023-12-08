@@ -1,5 +1,6 @@
 ﻿
 using AdressBookConsole.Models;
+using System.Text.Json.Nodes;
 
 namespace AdressBookConsole.Interfaces
 {
@@ -7,10 +8,12 @@ namespace AdressBookConsole.Interfaces
     {
         bool AddContactToList(IContact contact);
 
-        IEnumerable<IContact> GetAllContactsFromList();
+        ICollection<IContact> GetAllContactsFromList();
 
         Contact GetContactFromList(string email);
 
         bool DeleteContact(string email);
+
+        void Deserializer();
     }
 }

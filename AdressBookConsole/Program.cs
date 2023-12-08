@@ -4,6 +4,7 @@ using AdressBookConsole.Models;
 using AdressBookConsole.Services;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Newtonsoft.Json;
 
 namespace AdressBookConsole
 {
@@ -19,11 +20,13 @@ namespace AdressBookConsole
                 services.AddSingleton<MainMenu>();
 
             }).Build();
-
+            
             builder.Start();
             Console.Clear();
-
+            
+            var contactService = builder.Services.GetRequiredService<IContactService>();
             var mainMenu = builder.Services.GetRequiredService<MainMenu>();
+            contactService.Deserializer();
             mainMenu.ShowMainMenu();
         }
     }

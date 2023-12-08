@@ -6,7 +6,7 @@ namespace AdressBookConsole.Models
 {
     public class ContactService : IContactService
     {
-        private readonly List<IContact> _contactList = new List<IContact>();
+        private List<IContact> _contactList = new List<IContact>();
 
         private readonly IFileService _fileService;
 
@@ -24,12 +24,12 @@ namespace AdressBookConsole.Models
                     if (!_contactList.Any(x => x.Email == contact.Email))
                     {
                         _contactList.Add(contact);
-                        bool res = _fileService.WriteToFile(JsonConvert.SerializeObject(_contactList));
-                      
+                        bool res = _fileService.WriteToFile(_contactList);
+
                         if (res == true)
-                        {                    
+                        {
                             return true;
-                        }                           
+                        }
                     }
                 }
             }
@@ -37,7 +37,7 @@ namespace AdressBookConsole.Models
             return false;
         }
 
-        IEnumerable<IContact> IContactService.GetAllContactsFromList()
+        public ICollection<IContact> GetAllContactsFromList()
         {
             return _contactList;
         }
@@ -49,7 +49,33 @@ namespace AdressBookConsole.Models
 
         public bool DeleteContact(string email)
         {
-            throw new NotImplementedException();
+            for (int i = 0; i < _contactList.Count; i++)
+            {
+                if (_contactList[i].Email == email)
+                {
+                    _contactList.RemoveAt(i);
+                    _fileService.WriteToFile(_contactList);
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public void Deserializer()
+        {
+            try
+            {
+                var fileContent = _fileService.ReadFromFile();
+
+                if (!string.IsNullOrEmpty(fileContent))
+                {
+                    _contactList = JsonConvert.DeserializeObject<List<IContact>>(fileContent, new JsonSerializerSettings
+                    {
+                        TypeNameHandling = TypeNameHandling.Auto
+                    })!;
+                }
+            }
+            catch (Exception e) { Debug.WriteLine(e); }
         }
     }
 }

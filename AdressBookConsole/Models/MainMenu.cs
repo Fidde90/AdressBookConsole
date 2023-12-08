@@ -1,14 +1,14 @@
 ﻿
 
 using AdressBookConsole.Interfaces;
+using AdressBookConsole.Services;
 
 namespace AdressBookConsole.Models
 {
     public class MainMenu : IMainMenu
     {
         private readonly IMenuService _menuService;
-
-
+        
         public MainMenu(IMenuService menuService)
         {
             _menuService = menuService;
@@ -16,6 +16,7 @@ namespace AdressBookConsole.Models
 
         public void ShowMainMenu()
         {
+
             while (true)
             {
                 Console.Clear();
@@ -41,11 +42,11 @@ namespace AdressBookConsole.Models
                         break;
 
                     case "3":
-
+                        _menuService.ContactDetailsDialogue();
                         break;
 
                     case "4":
-
+                        _menuService.DeleteDialogue();
                         break;
 
                     case "5":
@@ -55,9 +56,7 @@ namespace AdressBookConsole.Models
                     default:
                         Console.WriteLine("Something went wrong, please try again..");
                         break;
-
                 }
-
                 Console.ReadKey();
             }
         }
