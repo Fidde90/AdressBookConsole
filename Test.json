@@ -1,13 +1,35 @@
 [
   {
     "$type": "AdressBookConsole.Models.Contact, AdressBookConsole",
-    "FirstName": "flaffis",
-    "LastName": "lala",
-    "PhoneNumber": "23423423",
-    "Email": "asdfds@sdfsdf.com",
-    "Street": "fsfdsfsdf 34",
-    "ZipCode": "234324",
-    "City": "erweter",
-    "Country": "asfasf"
+    "FirstName": "qdasds",
+    "LastName": "sadfds",
+    "PhoneNumber": 123456789,
+    "Email": "fdsfds",
+    "Street": "sdf",
+    "ZipCode": 0,
+    "City": "234",
+    "Country": "234"
+  },
+  {
+    "$type": "AdressBookConsole.Models.Contact, AdressBookConsole",
+    "FirstName": "tt",
+    "LastName": "tt",
+    "PhoneNumber": 709927636,
+    "Email": "asd",
+    "Street": "asdf",
+    "ZipCode": 0,
+    "City": "sdf",
+    "Country": "asdf"
+  },
+  {
+    "$type": "AdressBookConsole.Models.Contact, AdressBookConsole",
+    "FirstName": "uuu",
+    "LastName": "uuu",
+    "PhoneNumber": 444444444,
+    "Email": "23423",
+    "Street": "234",
+    "ZipCode": 0,
+    "City": "f",
+    "Country": "wer"
   }
 ]

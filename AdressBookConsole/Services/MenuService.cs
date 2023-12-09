@@ -1,8 +1,6 @@
 ﻿
 using AdressBookConsole.Interfaces;
 using AdressBookConsole.Models;
-using System.Collections.Concurrent;
-using System.Collections.Immutable;
 using System.Diagnostics;
 
 namespace AdressBookConsole.Services
@@ -19,6 +17,7 @@ namespace AdressBookConsole.Services
         public void AddContactDialogue()
         {
             IContact newContact = new Contact();
+            long phoneZipNr;
 
             Console.Clear();
 
@@ -28,8 +27,12 @@ namespace AdressBookConsole.Services
             Console.Write("\nEnter last name: ");
             newContact.LastName = Console.ReadLine()!;
 
-            Console.Write("\nEnter phone number (not mandatory): ");
-            newContact.PhoneNumber = Console.ReadLine()!;
+            do
+            {
+                Console.Write("\nEnter phone number: ");
+            } while (!long.TryParse(Console.ReadLine(), out phoneZipNr));
+
+            newContact.PhoneNumber = phoneZipNr;
 
             Console.Write("\nEnter e-mail: ");
             newContact.Email = Console.ReadLine()!;
@@ -37,8 +40,11 @@ namespace AdressBookConsole.Services
             Console.Write("\nEnter street: ");
             newContact.Street = Console.ReadLine()!;
 
-            Console.Write("\nEnter zip code: ");
-            newContact.ZipCode = Console.ReadLine()!;
+            do
+            {
+                Console.Write("\nEnter zipcode number: ");
+            }
+            while (!long.TryParse(Console.ReadLine(), out phoneZipNr));
 
             Console.Write("\nEnter city: ");
             newContact.City = Console.ReadLine()!;
@@ -62,7 +68,7 @@ namespace AdressBookConsole.Services
                 }
             }
         }
-     
+
         public void ShowAllContacts()
         {
             try
@@ -103,21 +109,28 @@ namespace AdressBookConsole.Services
 
                 do
                 {
-                    Console.Write("Enter contacts index number to remove from list: ");
+                    Console.Write("Enter index number to remove from list: ");
                     _ = int.TryParse(Console.ReadLine(), out remove);
                 } while (remove > contacts.Length || remove < contacts.Length);
 
                 bool res = _contactService.DeleteContact(contacts[remove - 1].Email);
 
                 if (res)
-                    Console.WriteLine("Contact removed!");
+                {
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine("\nContact removed!");
+                }
                 else
+                {
+                    Console.ForegroundColor = ConsoleColor.DarkRed;
                     Console.WriteLine("Contact does not excist");
+                }
+
             }
             else
             {
                 Console.ForegroundColor = ConsoleColor.DarkRed;
-                Console.WriteLine("The list was empty..");
+                Console.WriteLine("\nThe list was empty..");
             }
         }
 
@@ -131,5 +144,6 @@ namespace AdressBookConsole.Services
             else
                 return;
         }
+
     }
 }
