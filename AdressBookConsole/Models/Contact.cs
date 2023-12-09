@@ -8,13 +8,13 @@ namespace AdressBookConsole.Models
 
         public string LastName { get; set; } = null!;
 
-        public long PhoneNumber { get; set; } 
+        public string PhoneNumber { get; set; } 
 
         public string Email { get; set; } = null!;
 
         public string Street { get; set; } = null!;
 
-        public int ZipCode { get; set; } 
+        public string ZipCode { get; set; } 
 
         public string City { get; set; } = null!;
 
@@ -23,7 +23,7 @@ namespace AdressBookConsole.Models
 
         public Contact() { }
 
-        public Contact(string firstName, string lastName, long phoneNumber, string email, string street, int zipCode, string city, string country)
+        public Contact(string firstName, string lastName, string phoneNumber, string email, string street, string zipCode, string city, string country)
         {
             FirstName = firstName;
             LastName = lastName;

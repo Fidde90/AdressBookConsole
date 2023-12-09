@@ -17,7 +17,6 @@ namespace AdressBookConsole.Services
         public void AddContactDialogue()
         {
             IContact newContact = new Contact();
-            long phoneZipNr;
 
             Console.Clear();
 
@@ -27,12 +26,8 @@ namespace AdressBookConsole.Services
             Console.Write("\nEnter last name: ");
             newContact.LastName = Console.ReadLine()!;
 
-            do
-            {
-                Console.Write("\nEnter phone number: ");
-            } while (!long.TryParse(Console.ReadLine(), out phoneZipNr));
-
-            newContact.PhoneNumber = phoneZipNr;
+            Console.Write("\nEnter phone number: ");
+            newContact.PhoneNumber = Console.ReadLine()!;
 
             Console.Write("\nEnter e-mail: ");
             newContact.Email = Console.ReadLine()!;
@@ -40,11 +35,8 @@ namespace AdressBookConsole.Services
             Console.Write("\nEnter street: ");
             newContact.Street = Console.ReadLine()!;
 
-            do
-            {
-                Console.Write("\nEnter zipcode number: ");
-            }
-            while (!long.TryParse(Console.ReadLine(), out phoneZipNr));
+            Console.Write("\nEnter zipcode number: ");
+            newContact.ZipCode = Console.ReadLine()!;
 
             Console.Write("\nEnter city: ");
             newContact.City = Console.ReadLine()!;
@@ -92,7 +84,28 @@ namespace AdressBookConsole.Services
 
         public void ContactDetailsDialogue()
         {
+            var contacts = _contactService.GetAllContactsFromList().ToArray();
 
+            if (contacts.Length > 0)
+            {
+                int seeDetails;
+
+                for (var i = 0; i < contacts.Count(); i++)
+                    Console.WriteLine($"{i + 1}: {contacts[i].FirstName} {contacts[i].LastName} {contacts[i].City}");
+
+                do
+                {
+                    Console.Write("\nEnter index number for more details: ");
+                    _ = int.TryParse(Console.ReadLine(), out seeDetails);
+                } while (seeDetails > contacts.Length || seeDetails < 1);
+
+                _contactService.GetContactFromList(contacts[seeDetails -1].Email);
+            }
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.DarkRed;
+                Console.WriteLine("\nThe list was empty..");
+            }
 
         }
 

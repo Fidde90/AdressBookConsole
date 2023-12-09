@@ -7,13 +7,13 @@ namespace AdressBookConsole.Interfaces
 
         string LastName { get; set; }
 
-        long PhoneNumber { get; set; }
+        string PhoneNumber { get; set; }
 
         string Email { get; set; }
 
         string Street { get; set; }
 
-        int ZipCode { get; set; }
+        string ZipCode { get; set; }
 
         string City { get; set; }
 

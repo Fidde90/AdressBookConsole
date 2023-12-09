@@ -10,7 +10,7 @@ namespace AdressBookConsole.Interfaces
 
         ICollection<IContact> GetAllContactsFromList();
 
-        Contact GetContactFromList(string email);
+        void GetContactFromList(string email);
 
         bool DeleteContact(string email);
 

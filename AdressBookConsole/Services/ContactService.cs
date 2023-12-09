@@ -42,9 +42,22 @@ namespace AdressBookConsole.Models
             return _contactList;
         }
 
-        public Contact GetContactFromList(string email)
+        public void GetContactFromList(string email)
         {
-            throw new NotImplementedException();
+
+            for (int i = 0; i < _contactList.Count; i++)
+            {
+                if (_contactList[i].Email == email)
+                {
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.WriteLine("\n---------------------------------------------------------");
+                    Console.WriteLine($"\t{_contactList[i].FirstName} {_contactList[i].LastName}");
+                    Console.WriteLine($"\t{_contactList[i].Email}, {_contactList[i].PhoneNumber}");
+                    Console.WriteLine($"\t{_contactList[i].Street}, {_contactList[i].ZipCode}");
+                    Console.WriteLine($"\t{_contactList[i].City}, {_contactList[i].Country}");
+                    Console.WriteLine("---------------------------------------------------------");
+                }
+            }
         }
 
         public bool DeleteContact(string email)

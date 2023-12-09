@@ -1,35 +1,35 @@
 [
   {
     "$type": "AdressBookConsole.Models.Contact, AdressBookConsole",
-    "FirstName": "qdasds",
-    "LastName": "sadfds",
-    "PhoneNumber": 123456789,
-    "Email": "fdsfds",
-    "Street": "sdf",
-    "ZipCode": 0,
-    "City": "234",
-    "Country": "234"
+    "FirstName": "Anne",
+    "LastName": "Bengtsson",
+    "PhoneNumber": "0708964532",
+    "Email": "mamma@hotmail.com",
+    "Street": "Norregårdvägen 13",
+    "ZipCode": "28234",
+    "City": "Tyringe",
+    "Country": "Sweden"
   },
   {
     "$type": "AdressBookConsole.Models.Contact, AdressBookConsole",
-    "FirstName": "tt",
-    "LastName": "tt",
-    "PhoneNumber": 709927636,
-    "Email": "asd",
-    "Street": "asdf",
-    "ZipCode": 0,
-    "City": "sdf",
-    "Country": "asdf"
+    "FirstName": "Fredrik",
+    "LastName": "Bengtsson",
+    "PhoneNumber": "0709927636",
+    "Email": "kungen1990@hotmail.com",
+    "Street": "Stenbocksgatan 2c",
+    "ZipCode": "28233",
+    "City": "Tyringe",
+    "Country": "Sweden"
   },
   {
     "$type": "AdressBookConsole.Models.Contact, AdressBookConsole",
-    "FirstName": "uuu",
-    "LastName": "uuu",
-    "PhoneNumber": 444444444,
-    "Email": "23423",
-    "Street": "234",
-    "ZipCode": 0,
-    "City": "f",
-    "Country": "wer"
+    "FirstName": "Angelina",
+    "LastName": "Rose´n",
+    "PhoneNumber": "0786454323",
+    "Email": "angie@hotmail.com",
+    "Street": "Stenbocksgatan 2c",
+    "ZipCode": "28233",
+    "City": "Tyringe",
+    "Country": "Sweden"
   }
 ]
