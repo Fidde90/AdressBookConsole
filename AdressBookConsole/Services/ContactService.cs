@@ -47,7 +47,7 @@ namespace AdressBookConsole.Models
 
         public void GetContactFromList(string email)
         {
-
+            Console.Clear();
             for (int i = 0; i < _contactList.Count; i++)
             {
                 if (_contactList[i].Email == email)
