@@ -39,7 +39,10 @@ namespace AdressBookConsole.Models
 
         public ICollection<IContact> GetAllContactsFromList()
         {
-            return _contactList;
+            if (_contactList.Any())
+                return _contactList;
+            else
+                return null!;
         }
 
         public void GetContactFromList(string email)

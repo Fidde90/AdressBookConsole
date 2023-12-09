@@ -1,7 +1,6 @@
 ﻿
 using AdressBookConsole.Interfaces;
 using AdressBookConsole.Models;
-using System.Diagnostics;
 
 namespace AdressBookConsole.Services
 {
@@ -63,23 +62,7 @@ namespace AdressBookConsole.Services
 
         public void ShowAllContacts()
         {
-            try
-            {
-                var contacts = _contactService.GetAllContactsFromList();
-
-                if (!contacts.Any())
-                {
-                    Console.WriteLine("The list was empty..");
-                }
-                else
-                {
-                    foreach (var contact in contacts)
-                    {
-                        Console.WriteLine($"{contact.FirstName} {contact.LastName} {contact.City}");
-                    }
-                }
-            }
-            catch (Exception e) { Debug.WriteLine(e); }
+            showContacts();
         }
 
         public void ContactDetailsDialogue()
@@ -90,8 +73,7 @@ namespace AdressBookConsole.Services
             {
                 int seeDetails;
 
-                for (var i = 0; i < contacts.Count(); i++)
-                    Console.WriteLine($"{i + 1}: {contacts[i].FirstName} {contacts[i].LastName} {contacts[i].City}");
+                showContacts();
 
                 do
                 {
@@ -99,14 +81,13 @@ namespace AdressBookConsole.Services
                     _ = int.TryParse(Console.ReadLine(), out seeDetails);
                 } while (seeDetails > contacts.Length || seeDetails < 1);
 
-                _contactService.GetContactFromList(contacts[seeDetails -1].Email);
+                _contactService.GetContactFromList(contacts[seeDetails - 1].Email);
             }
             else
             {
                 Console.ForegroundColor = ConsoleColor.DarkRed;
                 Console.WriteLine("\nThe list was empty..");
             }
-
         }
 
         public void DeleteDialogue()
@@ -116,15 +97,13 @@ namespace AdressBookConsole.Services
             if (contacts.Length > 0)
             {
                 int remove;
-
-                for (var i = 0; i < contacts.Count(); i++)
-                    Console.WriteLine($"{i + 1}: {contacts[i].FirstName} {contacts[i].LastName} {contacts[i].City}");
+                showContacts();
 
                 do
                 {
-                    Console.Write("Enter index number to remove from list: ");
+                    Console.Write("\nEnter index number to remove from list: ");
                     _ = int.TryParse(Console.ReadLine(), out remove);
-                } while (remove > contacts.Length || remove < contacts.Length);
+                } while (remove > contacts.Length || remove < 1);
 
                 bool res = _contactService.DeleteContact(contacts[remove - 1].Email);
 
@@ -158,5 +137,22 @@ namespace AdressBookConsole.Services
                 return;
         }
 
+        private void showContacts()
+        {
+            var c = _contactService.GetAllContactsFromList().ToArray();
+
+            if (c == null)
+                Console.WriteLine("List was empty");
+            else
+            {
+                for (var i = 0; i < c.Count(); i++)
+                {
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.WriteLine("----------------------------------");
+                    Console.WriteLine($"{i + 1}: {c[i].FirstName} {c[i].LastName}, {c[i].City}");
+                    Console.WriteLine("----------------------------------");
+                }
+            }
+        }
     }
 }

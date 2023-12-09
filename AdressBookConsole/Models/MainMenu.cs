@@ -28,7 +28,7 @@ namespace AdressBookConsole.Models
                 Console.WriteLine($"{"3:",-4} Show contact details");
                 Console.WriteLine($"{"4:",-4} Remove contact from list");
                 Console.WriteLine($"{"5:",-4} Close application\n");
-                Console.Write("Make a chosie by entering a number: ");
+                Console.Write("\nMake a chosie by entering a number: ");
                 string choise = Console.ReadLine() ?? "";
 
                 switch (choise)
