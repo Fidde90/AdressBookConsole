@@ -16,6 +16,10 @@ namespace AdressBookConsole.Models
 
         public void ShowMainMenu()
         {
+            ///<summary>
+            /// The program's main menu from which the user can make various choices.
+            /// Various choises call on various methods that is comming from the menuService file.
+            /// </summary>
 
             while (true)
             {

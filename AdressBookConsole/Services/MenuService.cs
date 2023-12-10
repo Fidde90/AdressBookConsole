@@ -15,6 +15,11 @@ namespace AdressBookConsole.Services
 
         public void AddContactDialogue()
         {
+            ///<summary>
+            ///In this dialogue a new Contact get created and the user writes in all the information needed.
+            ///And the contact is added to the list(in contactService file) and saved to a file on the computer.
+            /// </summary>
+
             IContact newContact = new Contact();
 
             Console.Clear();
@@ -64,27 +69,37 @@ namespace AdressBookConsole.Services
 
         public void ShowAllContacts()
         {
+            ///<summary>
+            /// All contacts are fetched via a method and then saved to an Array which can then print them all out so the user can see them.
+            /// </summary>
+
             Console.Clear();
-            if (_contactService.GetAllContactsFromList() == null)
+            var c = _contactService.GetAllContactsFromList().ToArray();
+
+            if (c == null)
                 emptyList();
             else
-            {
-                var c = _contactService.GetAllContactsFromList().ToArray();
+            {           
                 showContacts("Contacts", c);
             }
         }
 
         public void ContactDetailsDialogue()
         {
+            ///<summary>
+            ///In this method all contacts get fetched via a method called "GetAllContactsFromList", if the returned value from that method 
+            ///is´t Null another method get called and the value from the last method get passed in and all the contacts get displayed on screen. 
+            ///Then the user choose witch contact by entering the Index number. And then the chosen one´s email get passed in to a method called 
+            ///"GetContactFromList", and if the email match an email in the list, the contacts details pop up on the screen.
+            /// </summary>
             Console.Clear();
+            var c = _contactService.GetAllContactsFromList().ToArray();
 
-            if (_contactService.GetAllContactsFromList() == null)
+            if (c == null)
                 emptyList();
             else
-            {
-                var c = _contactService.GetAllContactsFromList().ToArray();
+            {              
                 int seeDetails;
-
                 showContacts("Details", c);
 
                 do
@@ -99,13 +114,17 @@ namespace AdressBookConsole.Services
 
         public void DeleteDialogue()
         {
+            ///<summary>
+            ///If the variable "C" is not null, all contacts are displayed on screen and the user can then choose witch contact to delete by entering it´s indexnumber.
+            ///The contacts email get passed in to another method witch compares it to all emails in the list and then delets the contact(if the contact excists).
+            /// </summary>
             Console.Clear();
+            var c = _contactService.GetAllContactsFromList().ToArray();
 
-            if (_contactService.GetAllContactsFromList() == null)
+            if (c == null)
                 emptyList();
             else
-            {
-                var c = _contactService.GetAllContactsFromList().ToArray();
+            {              
                 int remove;
                 showContacts("Remove contact", c);
 
@@ -127,6 +146,9 @@ namespace AdressBookConsole.Services
 
         public void ExitDialogue()
         {
+            ///<summary>
+            ///The get asked if he/she really wants to exit the app, and if so, the program is turned of.
+            ///</summary>
             Console.Clear();
             Console.WriteLine("|----| Exit |----|\n");
             Console.Write("Are you sure you want to exit? (y/n): ");
@@ -140,10 +162,14 @@ namespace AdressBookConsole.Services
 
         private void showContacts(string title, IContact[] c)
         {
+            ///<summary>
+            ///This is a method thas is called a number of times to display all contacts on screen.
+            /// </summary>
+
             Console.Clear();
             Console.WriteLine($"|----|{title}|----|\n");
 
-            for (var i = 0; i < c.Count(); i++)
+            for (var i = 0; i < c.Length; i++)
             {
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.WriteLine("----------------------------------");

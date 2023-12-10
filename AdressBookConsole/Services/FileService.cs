@@ -11,6 +11,10 @@ namespace AdressBookConsole.Services
 
         public bool WriteToFile(List<IContact> contactList)
         {
+            ///<summary>
+            ///Takes a list of "IContact" in the parameter and converts it to Json format and writes it to a file on the computer.
+            ///If the task does not succeed it will return a boolen value of false.
+            /// <summary>
             string list = JsonConvert.SerializeObject(contactList, new JsonSerializerSettings
             {
                 Formatting = Formatting.Indented,
@@ -19,7 +23,7 @@ namespace AdressBookConsole.Services
 
             try
             {
-                if (!string.IsNullOrEmpty(list))
+                if (!string.IsNullOrEmpty(list)) 
                 {
                     using (StreamWriter writer = new StreamWriter(_filePath))
                     {
@@ -34,6 +38,10 @@ namespace AdressBookConsole.Services
 
         public string ReadFromFile()
         {
+            ///<summary>
+            ///If the file excists at the enterd filepath, the streamreader reads the file and returns the content.
+            ///else it return a valye of null or a empty string.
+            /// </summary>
             try
             {
                 if (File.Exists(_filePath))
