@@ -1,6 +1,7 @@
 ﻿
 using AdressBookConsole.Interfaces;
 using AdressBookConsole.Models;
+using System.Diagnostics;
 
 namespace AdressBookConsole.Services
 {
@@ -62,7 +63,7 @@ namespace AdressBookConsole.Services
                 }
                 else
                 {
-                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("\nContact already excists!");
                 }
             }
@@ -76,14 +77,16 @@ namespace AdressBookConsole.Services
         public void ShowAllContacts()
         {
             Console.Clear();
-            var c = _contactService.GetAllContactsFromList().ToArray();
-
-            if (c == null)
-                EmptyList();
-            else
-            {           
+            try
+            {
+                var c = _contactService.GetAllContactsFromList().ToArray();
                 ShowContacts("Contacts", c);
             }
+            catch (Exception e) 
+            {
+                EmptyList();
+                Debug.WriteLine(e);
+            }     
         }
 
         /// <summary>
@@ -97,12 +100,9 @@ namespace AdressBookConsole.Services
         public void ContactDetailsDialogue()
         {
             Console.Clear();
-            var c = _contactService.GetAllContactsFromList().ToArray();
-   
-            if (c == null)
-                EmptyList();
-            else
-            {              
+            try
+            {
+                var c = _contactService.GetAllContactsFromList().ToArray();
                 int seeDetails;
                 ShowContacts("Details", c);
 
@@ -114,6 +114,11 @@ namespace AdressBookConsole.Services
 
                 _contactService.GetContactFromList(c[seeDetails - 1].Email);
             }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e);
+                EmptyList();
+            }         
         }
 
 
@@ -122,14 +127,11 @@ namespace AdressBookConsole.Services
         /// The contacts email get passed in to another method witch compares it to all emails in the list and then delets the contact(if the contact excists).
         /// </summary>
         public void DeleteDialogue()
-        {        
+        {
             Console.Clear();
-            var c = _contactService.GetAllContactsFromList().ToArray();
-
-            if (c == null)
-                EmptyList();
-            else
-            {              
+            try
+            {
+                var c = _contactService.GetAllContactsFromList().ToArray();
                 int remove;
                 ShowContacts("Remove contact", c);
 
@@ -146,6 +148,11 @@ namespace AdressBookConsole.Services
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine("\nContact removed!");
                 }
+            }
+            catch (Exception e) 
+            {
+                Debug.WriteLine(e);
+                EmptyList(); 
             }
         }
 

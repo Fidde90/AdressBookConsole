@@ -1,13 +1,1 @@
-[
-  {
-    "$type": "AdressBookConsole.Models.Contact, AdressBookConsole",
-    "FirstName": null,
-    "LastName": null,
-    "PhoneNumber": null,
-    "Email": "hej@hotmail.com",
-    "Street": null,
-    "ZipCode": null,
-    "City": null,
-    "Country": null
-  }
-]
+[]
