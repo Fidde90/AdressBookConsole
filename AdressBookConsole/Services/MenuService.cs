@@ -13,13 +13,14 @@ namespace AdressBookConsole.Services
             _contactService = contactService;
         }
 
+        /// <summary>
+        /// In this dialogue a new Contact get created and the user writes in all the information needed.
+        /// And the contact is added to the list(in contactService file) and saved to a file on the computer.
+        /// </summary>
+        /// <params name=""></params>
+        /// <returns></returns>
         public void AddContactDialogue()
         {
-            ///<summary>
-            ///In this dialogue a new Contact get created and the user writes in all the information needed.
-            ///And the contact is added to the list(in contactService file) and saved to a file on the computer.
-            /// </summary>
-
             IContact newContact = new Contact();
 
             Console.Clear();
@@ -67,40 +68,43 @@ namespace AdressBookConsole.Services
             }
         }
 
+        /// <summary>
+        /// All contacts are fetched via a method and then saved to an Array which can then print them all out so the user can see them.
+        /// </summary>
+        /// <param name=""></param>
+        /// <returns></returns>
         public void ShowAllContacts()
         {
-            ///<summary>
-            /// All contacts are fetched via a method and then saved to an Array which can then print them all out so the user can see them.
-            /// </summary>
-
             Console.Clear();
             var c = _contactService.GetAllContactsFromList().ToArray();
 
             if (c == null)
-                emptyList();
+                EmptyList();
             else
             {           
-                showContacts("Contacts", c);
+                ShowContacts("Contacts", c);
             }
         }
 
+        /// <summary>
+        /// In this method all contacts get fetched via a method called "GetAllContactsFromList", if the returned value from that method 
+        /// is´t Null another method get called and the value from the last method get passed in and all the contacts get displayed on screen. 
+        /// Then the user choose witch contact by entering the Index number. The chosen one´s email get passed in to a method called 
+        /// "GetContactFromList", and if the email match an email in the list, the contacts details pop up on the screen. 
+        /// </summary>
+        /// <params name=""></params>
+        /// <returns></returns>
         public void ContactDetailsDialogue()
         {
-            ///<summary>
-            ///In this method all contacts get fetched via a method called "GetAllContactsFromList", if the returned value from that method 
-            ///is´t Null another method get called and the value from the last method get passed in and all the contacts get displayed on screen. 
-            ///Then the user choose witch contact by entering the Index number. And then the chosen one´s email get passed in to a method called 
-            ///"GetContactFromList", and if the email match an email in the list, the contacts details pop up on the screen.
-            /// </summary>
             Console.Clear();
             var c = _contactService.GetAllContactsFromList().ToArray();
-
+   
             if (c == null)
-                emptyList();
+                EmptyList();
             else
             {              
                 int seeDetails;
-                showContacts("Details", c);
+                ShowContacts("Details", c);
 
                 do
                 {
@@ -112,21 +116,22 @@ namespace AdressBookConsole.Services
             }
         }
 
+
+        /// <summary>
+        /// If the variable "C" is not null, all contacts are displayed on screen and the user can then choose witch contact to delete by entering it´s indexnumber.
+        /// The contacts email get passed in to another method witch compares it to all emails in the list and then delets the contact(if the contact excists).
+        /// </summary>
         public void DeleteDialogue()
-        {
-            ///<summary>
-            ///If the variable "C" is not null, all contacts are displayed on screen and the user can then choose witch contact to delete by entering it´s indexnumber.
-            ///The contacts email get passed in to another method witch compares it to all emails in the list and then delets the contact(if the contact excists).
-            /// </summary>
+        {        
             Console.Clear();
             var c = _contactService.GetAllContactsFromList().ToArray();
 
             if (c == null)
-                emptyList();
+                EmptyList();
             else
             {              
                 int remove;
-                showContacts("Remove contact", c);
+                ShowContacts("Remove contact", c);
 
                 do
                 {
@@ -144,11 +149,11 @@ namespace AdressBookConsole.Services
             }
         }
 
+        /// <summary>
+        /// The get asked if he/she really wants to exit the app, and if so, the program is turned of.
+        /// </summary>
         public void ExitDialogue()
         {
-            ///<summary>
-            ///The get asked if he/she really wants to exit the app, and if so, the program is turned of.
-            ///</summary>
             Console.Clear();
             Console.WriteLine("|----| Exit |----|\n");
             Console.Write("Are you sure you want to exit? (y/n): ");
@@ -160,12 +165,13 @@ namespace AdressBookConsole.Services
                 return;
         }
 
-        private void showContacts(string title, IContact[] c)
+        /// <summary>
+        /// This is a method to display all contacts on screen.
+        /// </summary>
+        /// <param name="title">the name of the title to display</param>
+        /// <param name="c">an Array of IContact</param>
+        private static void ShowContacts(string title, IContact[] c)
         {
-            ///<summary>
-            ///This is a method thas is called a number of times to display all contacts on screen.
-            /// </summary>
-
             Console.Clear();
             Console.WriteLine($"|----|{title}|----|\n");
 
@@ -178,7 +184,10 @@ namespace AdressBookConsole.Services
             }
         }
 
-        private void emptyList()
+        /// <summary>
+        /// Changes the color of the text to dark red and says the list is empty.
+        /// </summary>
+        private static void EmptyList()
         {
             Console.ForegroundColor = ConsoleColor.DarkRed;
             Console.WriteLine("\nThe list was empty..");

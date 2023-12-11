@@ -1,7 +1,5 @@
 ﻿
-
 using AdressBookConsole.Interfaces;
-using AdressBookConsole.Services;
 
 namespace AdressBookConsole.Models
 {

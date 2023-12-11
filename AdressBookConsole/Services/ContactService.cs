@@ -15,6 +15,11 @@ namespace AdressBookConsole.Models
             _fileService = fileService;
         }
 
+        /// <summary>
+        /// Adds a contact to the list.
+        /// </summary>
+        /// <param name="contact">IContact</param>
+        /// <returns>true if the contact's email does not match anyone else's in the list, otherwise false</returns>
         public bool AddContactToList(IContact contact)
         {
             try
@@ -37,6 +42,10 @@ namespace AdressBookConsole.Models
             return false;
         }
 
+        /// <summary>
+        /// Checks if the list contains any values.
+        /// </summary>
+        /// <returns>returns the list of contacts if true, else null</returns>
         public ICollection<IContact> GetAllContactsFromList()
         {
             if (_contactList.Any())
@@ -45,6 +54,10 @@ namespace AdressBookConsole.Models
                 return null!;
         }
 
+        /// <summary>
+        /// Shows all information of the chosen contact.
+        /// </summary>
+        /// <param name="email">the email value of the contact(string)</param>
         public void GetContactFromList(string email)
         {
             Console.Clear();
@@ -63,6 +76,12 @@ namespace AdressBookConsole.Models
             }
         }
 
+        /// <summary>
+        /// Checks if the contact excists via its email and delete him/her from the list.
+        /// Then the file on the computer gets updated with the modified list.
+        /// </summary>
+        /// <param name="email">the eamil value(string) of the contact</param>
+        /// <returns>true om the contact was deleted, false if the contact dosent excist</returns>
         public bool DeleteContact(string email)
         {
             for (int i = 0; i < _contactList.Count; i++)
@@ -95,3 +114,4 @@ namespace AdressBookConsole.Models
         }
     }
 }
+ 

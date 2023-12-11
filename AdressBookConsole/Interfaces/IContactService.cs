@@ -1,7 +1,4 @@
 ﻿
-using AdressBookConsole.Models;
-using System.Text.Json.Nodes;
-
 namespace AdressBookConsole.Interfaces
 {
     public interface IContactService

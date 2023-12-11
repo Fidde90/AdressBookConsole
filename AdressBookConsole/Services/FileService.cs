@@ -9,12 +9,13 @@ namespace AdressBookConsole.Services
     {
         private readonly string _filePath = @"C:\AdressBookCsharp\AdressBookConsole\Test.json";
 
+        /// <summary>
+        /// Takes a list of "IContact" in the parameter and converts it to Json format and writes it to a file on the computer.
+        /// </summary>
+        /// <param name="contactList">A list of IContact</param>
+        /// <returns>true if the task was successful, otherwise false.</returns>
         public bool WriteToFile(List<IContact> contactList)
         {
-            ///<summary>
-            ///Takes a list of "IContact" in the parameter and converts it to Json format and writes it to a file on the computer.
-            ///If the task does not succeed it will return a boolen value of false.
-            /// <summary>
             string list = JsonConvert.SerializeObject(contactList, new JsonSerializerSettings
             {
                 Formatting = Formatting.Indented,
@@ -36,12 +37,12 @@ namespace AdressBookConsole.Services
             return false;
         }
 
+        /// <summary>
+        /// If the file excists at the enterd filepath, the streamreader reads the file, and returns the content.
+        /// </summary>
+        /// <returns> a string value(the text written in the file), otherwise null or a empty string</returns>
         public string ReadFromFile()
         {
-            ///<summary>
-            ///If the file excists at the enterd filepath, the streamreader reads the file and returns the content.
-            ///else it return a valye of null or a empty string.
-            /// </summary>
             try
             {
                 if (File.Exists(_filePath))
