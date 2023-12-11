@@ -49,7 +49,7 @@ namespace AdressBookConsole.Services
             Console.Write("\nEnter city: ");
             newContact.City = Console.ReadLine()!;
 
-            Console.Write("\nEnter country ");
+            Console.Write("\nEnter country: ");
             newContact.Country = Console.ReadLine()!;
 
             if (newContact != null)
@@ -185,9 +185,9 @@ namespace AdressBookConsole.Services
             for (var i = 0; i < c.Length; i++)
             {
                 Console.ForegroundColor = ConsoleColor.White;
-                Console.WriteLine("----------------------------------");
+                Console.WriteLine("\n------------------------------------------------------------------------------------");
                 Console.WriteLine($"{i + 1}: {c[i].FirstName} {c[i].LastName}, {c[i].City}");
-                Console.WriteLine("----------------------------------");
+                Console.WriteLine("------------------------------------------------------------------------------------");
             }
         }
 

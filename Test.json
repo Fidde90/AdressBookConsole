@@ -1,1 +1,35 @@
-[]
+[
+  {
+    "$type": "AdressBookConsole.Models.Contact, AdressBookConsole",
+    "FirstName": "Angelripper",
+    "LastName": "Tormentor",
+    "PhoneNumber": "12345678910",
+    "Email": "Exodus@BondedByBlood.com",
+    "Street": "EndlessPain 2c",
+    "ZipCode": "666",
+    "City": "City Of Damnation",
+    "Country": "Hell"
+  },
+  {
+    "$type": "AdressBookConsole.Models.Contact, AdressBookConsole",
+    "FirstName": "Damien",
+    "LastName": "Damiensson",
+    "PhoneNumber": "0987654321",
+    "Email": "PleasureToKill@Kreator.com",
+    "Street": "Skid Row 3a",
+    "ZipCode": "999",
+    "City": "Sodom",
+    "Country": "Necropolis"
+  },
+  {
+    "$type": "AdressBookConsole.Models.Contact, AdressBookConsole",
+    "FirstName": "Eddie",
+    "LastName": "Maiden",
+    "PhoneNumber": "1",
+    "Email": "Killers@Powerslave.com",
+    "Street": "Somewhere in time 2c",
+    "ZipCode": "2",
+    "City": "Piece of mind",
+    "Country": "Seventh son"
+  }
+]
