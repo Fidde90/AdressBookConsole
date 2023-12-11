@@ -12,6 +12,9 @@ namespace AdressBookConsole
     {
         static void Main(string[] args)
         {
+            ///<suammry>
+            /// all files that are dependent on each other(this is the dependency injection)
+            /// </suammry>
             var builder = Host.CreateDefaultBuilder().ConfigureServices(services =>
             {
                 services.AddSingleton<IContactService, ContactService>();

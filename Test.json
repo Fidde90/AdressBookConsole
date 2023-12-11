@@ -1,13 +1,13 @@
 [
   {
     "$type": "AdressBookConsole.Models.Contact, AdressBookConsole",
-    "FirstName": "Fredrik",
-    "LastName": "Bengtsson",
-    "PhoneNumber": "234234242",
-    "Email": "asdffd@assad.com",
-    "Street": "ewfsadfa",
-    "ZipCode": "42342432",
-    "City": "sdfsdf",
-    "Country": "dfdsfsd"
+    "FirstName": null,
+    "LastName": null,
+    "PhoneNumber": null,
+    "Email": "hej@hotmail.com",
+    "Street": null,
+    "ZipCode": null,
+    "City": null,
+    "Country": null
   }
 ]
