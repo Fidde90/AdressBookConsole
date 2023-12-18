@@ -96,6 +96,9 @@ namespace AdressBookConsole.Models
             return false;
         }
 
+        /// <summary>
+        /// Deserializes the Json object to a .Net type using JsonSerializerSettings.
+        /// </summary>
         public void Deserializer()
         {
             try
