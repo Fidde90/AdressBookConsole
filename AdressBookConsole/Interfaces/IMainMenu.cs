@@ -1,5 +1,4 @@
-﻿
-namespace AdressBookConsole.Interfaces
+﻿namespace AdressBookConsole.Interfaces
 {
     public interface IMainMenu
     {

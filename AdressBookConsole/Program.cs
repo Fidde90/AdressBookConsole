@@ -1,10 +1,11 @@
 ﻿
+using AdressBook_Library.Interfaces;
 using AdressBookConsole.Interfaces;
 using AdressBookConsole.Models;
+using AdressBook_Library.Services;
 using AdressBookConsole.Services;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Newtonsoft.Json;
 
 namespace AdressBookConsole
 {
@@ -17,7 +18,7 @@ namespace AdressBookConsole
             /// </suammry>
             var builder = Host.CreateDefaultBuilder().ConfigureServices(services =>
             {
-                services.AddSingleton<IContactService, ContactService>();
+                services.AddSingleton<IPersonService, PersonService>();
                 services.AddSingleton<IMenuService, MenuService>();
                 services.AddSingleton<IFileService, FileService>();
                 services.AddSingleton<MainMenu>();
@@ -27,9 +28,8 @@ namespace AdressBookConsole
             builder.Start();
             Console.Clear();
             
-            var contactService = builder.Services.GetRequiredService<IContactService>();
+            var PersonService = builder.Services.GetRequiredService<IPersonService>();
             var mainMenu = builder.Services.GetRequiredService<MainMenu>();
-            contactService.Deserializer();
             mainMenu.ShowMainMenu();
         }
     }

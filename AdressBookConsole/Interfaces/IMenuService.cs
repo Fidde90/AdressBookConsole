@@ -1,13 +1,12 @@
-﻿
-namespace AdressBookConsole.Interfaces
+﻿namespace AdressBookConsole.Interfaces
 {
     public interface IMenuService
     {
-        void AddContactDialogue();
+        void AddPersonDialogue();
 
-        void ShowAllContacts();
+        void ShowAllPersons();
 
-        void ContactDetailsDialogue();
+        void PersonDetailsDialogue();
 
         void DeleteDialogue();
 

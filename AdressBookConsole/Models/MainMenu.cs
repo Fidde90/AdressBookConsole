@@ -1,5 +1,4 @@
-﻿
-using AdressBookConsole.Interfaces;
+﻿using AdressBookConsole.Interfaces;
 
 namespace AdressBookConsole.Models
 {
@@ -25,10 +24,10 @@ namespace AdressBookConsole.Models
                 Console.ForegroundColor = ConsoleColor.DarkYellow;
 
                 Console.WriteLine("|----| AdressBook |----|\n");
-                Console.WriteLine($"{"1:",-4} Add contact");
-                Console.WriteLine($"{"2:",-4} Show all contacts");
-                Console.WriteLine($"{"3:",-4} Show contact details");
-                Console.WriteLine($"{"4:",-4} Remove contact from list");
+                Console.WriteLine($"{"1:",-4} Add Person");
+                Console.WriteLine($"{"2:",-4} Show all Persons");
+                Console.WriteLine($"{"3:",-4} Show Person details");
+                Console.WriteLine($"{"4:",-4} Remove Person from list");
                 Console.WriteLine($"{"5:",-4} Close application\n");
                 Console.Write("\nMake a chosie by entering a number: ");
                 string choise = Console.ReadLine() ?? "";
@@ -36,15 +35,15 @@ namespace AdressBookConsole.Models
                 switch (choise)
                 {
                     case "1":
-                        _menuService.AddContactDialogue();
+                        _menuService.AddPersonDialogue();
                         break;
 
                     case "2":
-                        _menuService.ShowAllContacts();
+                        _menuService.ShowAllPersons();
                         break;
 
                     case "3":
-                        _menuService.ContactDetailsDialogue();
+                        _menuService.PersonDetailsDialogue();
                         break;
 
                     case "4":
