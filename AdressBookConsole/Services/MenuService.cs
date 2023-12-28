@@ -80,8 +80,8 @@ namespace AdressBookConsole.Services
             Console.Clear();
             try
             {
-                var c = _personService.GetAllPersonsFromList().ToArray();
-                ShowPersons("Persons", c);
+                var pList = _personService.GetAllPersonsFromList().ToArray();   
+                ShowPersons("Persons", pList);            
             }
             catch (Exception e)
             {
@@ -122,7 +122,6 @@ namespace AdressBookConsole.Services
 
                 var person = _personService.GetPersonFromList(pList[seeDetails - 1].Email);
 
-
                 Console.Clear();
                 Console.WriteLine($"\n {person.FirstName} {person.LastName}");
                 Console.WriteLine($" {person.Email}, {person.PhoneNumber}");
@@ -135,7 +134,6 @@ namespace AdressBookConsole.Services
             }
         }
 
-
         /// <summary>
         /// If the variable "C" is not null, all Persons are displayed on screen and the user can then choose witch contact to delete by entering it´s indexnumber.
         /// The Persons email get passed in to another method witch compares it to all emails in the list and then delets the contact(if the contact excists).
@@ -143,12 +141,12 @@ namespace AdressBookConsole.Services
         public void DeleteDialogue()
         {
             try
-            {
-                var c = _personService.GetAllPersonsFromList().ToArray();
+            {            
+                var pList = _personService.GetAllPersonsFromList().ToArray();
                 int remove;
-                ShowPersons("Remove contact", c);
+                ShowPersons("Remove contact", pList);
 
-                if (c.Length < 1)
+                if (pList.Length < 1)
                 {
                     EmptyList();
                     return;
@@ -158,9 +156,9 @@ namespace AdressBookConsole.Services
                 {
                     Console.Write("\nEnter index number to remove from list: ");
                     _ = int.TryParse(Console.ReadLine(), out remove);
-                } while (remove > c.Length || remove < 1);
+                } while (remove > pList.Length || remove < 1);
 
-                bool res = _personService.DeletePerson(c[remove - 1].Email);
+                bool res = _personService.DeletePerson(pList[remove - 1].Email);
 
                 if (res)
                 {
@@ -169,7 +167,6 @@ namespace AdressBookConsole.Services
                 }
             }
             catch (Exception e) { Debug.WriteLine(e); }
-
         }
 
         /// <summary>
@@ -193,16 +190,16 @@ namespace AdressBookConsole.Services
         /// </summary>
         /// <param name="title">the name of the title to display</param>
         /// <param name="c">an Array of IContact</param>
-        private static void ShowPersons(string title, IPerson[] c)
+        private static void ShowPersons(string title, IPerson[] p)
         {
             Console.Clear();
             Console.WriteLine($"|----|{title}|----|\n");
 
-            for (var i = 0; i < c.Length; i++)
+            for (var i = 0; i < p.Length; i++)
             {
                 Console.ForegroundColor = ConsoleColor.White;
-                Console.WriteLine("\n------------------------------------------------------------------------------------");
-                Console.WriteLine($"{i + 1}: {c[i].FirstName} {c[i].LastName}, {c[i].City}");
+                Console.WriteLine("------------------------------------------------------------------------------------");
+                Console.WriteLine($"{i + 1}: {p[i].FirstName} {p[i].LastName}, {p[i].City}");
                 Console.WriteLine("------------------------------------------------------------------------------------");
             }
         }
