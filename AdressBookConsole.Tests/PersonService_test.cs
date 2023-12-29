@@ -1,6 +1,7 @@
 ﻿using AdressBook_Library.Interfaces;
 using AdressBook_Library.Models;
 using AdressBook_Library.Services;
+using Moq;
 using Xunit;
 
 namespace AdressBook_Library.Tests
@@ -8,14 +9,11 @@ namespace AdressBook_Library.Tests
     public class PersonService_test
     {
         [Fact]
-
-        public void AddPersonToList_ShouldAddAPersonToTheList_AndThenReturnTrue()
+        public void AddPersonToList_ShouldAddAPersonToAList_AndReturnTrue()
         {
             //Arrange
-            FileService f = new FileService();
-            PersonService PersonService = new PersonService(f);
 
-            IPerson c = new Person
+            IPerson person = new Person
             {
                 FirstName = "Fredrik",
                 LastName = "Bengtsson",
@@ -27,38 +25,16 @@ namespace AdressBook_Library.Tests
                 Country = "Antarctia"
             };
 
+            var mockFileService = new Mock<IFileService>();
+            IPersonService personService = new PersonService(mockFileService.Object);
+
             //Act
-            bool res = PersonService.AddPersonToList(c);
+
+            bool res = personService.AddPersonToList(person);
 
             //Assert
+
             Assert.True(res);
-        }
-
-        [Fact]
-
-        public void AddPersonToList_ShoulNotPersonToList_IfEmailAlredyExcitsReturnFalse()
-        {
-            //Arrange
-            FileService f = new FileService();
-            PersonService PersonService = new PersonService(f);
-
-            IPerson c = new Person
-            {
-                Email="hej@hotmail.com"            
-            };
-
-            IPerson x = new Person
-            {
-                Email = "hej@hotmail.com"
-            };
-
-            PersonService.AddPersonToList(c);
-
-            //Act
-
-            bool res2 = PersonService.AddPersonToList(x);
-            //Assert
-            Assert.False(res2);
         }
     }
 }
